@@ -74,7 +74,7 @@ int TTF_SetScript(int script) /* hb_script_t */
 #endif
 
 /* Round glyph width to 16 bytes use NEON instructions */
-#if defined(__ARM_NEON)
+#if 0 //defined(__ARM_NEON)
 #  define HAVE_NEON_INTRINSICS 1
 #endif
 
@@ -109,7 +109,7 @@ static SDL_INLINE int hasSSE2()
 }
 #endif
 
-#if defined(HAVE_NEON_INTRINSICS)
+#if 0 //defined(HAVE_NEON_INTRINSICS)
 static SDL_INLINE int hasNEON()
 {
     static int val = -1;
@@ -541,7 +541,7 @@ static SDL_INLINE void BG_Blended_SSE(const TTF_Image *image, Uint32 *destinatio
 }
 #endif
 
-#if defined(HAVE_NEON_INTRINSICS)
+#if 0 //defined(HAVE_NEON_INTRINSICS)
 /* Apply: alpha_table[i] = i << 24; */
 static SDL_INLINE void BG_Blended_Opaque_NEON(const TTF_Image *image, Uint32 *destination, Sint32 srcskip, Uint32 dstskip)
 {
@@ -748,7 +748,7 @@ static SDL_INLINE void BG_SSE(const TTF_Image *image, Uint8 *destination, Sint32
 }
 #endif
 
-#if defined(HAVE_NEON_INTRINSICS)
+#if 0 //defined(HAVE_NEON_INTRINSICS)
 static SDL_INLINE void BG_NEON(const TTF_Image *image, Uint8 *destination, Sint32 srcskip, Uint32 dstskip)
 {
     const Uint8 *src    = image->buffer;
@@ -854,7 +854,7 @@ static void clip_glyph(int *_x, int *_y, TTF_Image *image, const SDL_Surface *te
 /* Glyph width is rounded, dst addresses are aligned, src addresses are not aligned */
 static int Get_Alignement()
 {
-#if defined(HAVE_NEON_INTRINSICS)
+#if 0 //defined(HAVE_NEON_INTRINSICS)
     if (hasNEON()) {
         return 16;
     }
@@ -977,7 +977,7 @@ BUILD_RENDER_LINE(SSE_Blended_SP        , 1, 0, 0     , PIXMAP, SUBPIX,         
 BUILD_RENDER_LINE(SSE_Blended_Opaque_SP , 1, 1, 0     , PIXMAP, SUBPIX, BG_Blended_Opaque_SSE ,                ,            )
 #endif
 
-#if defined(HAVE_NEON_INTRINSICS)
+#if 0 //defined(HAVE_NEON_INTRINSICS)
 BUILD_RENDER_LINE(NEON_Shaded           , 0, 0, 0     , PIXMAP, 0     ,                       ,                , BG_NEON    )
 BUILD_RENDER_LINE(NEON_Blended          , 1, 0, 0     , PIXMAP, 0     ,                       , BG_Blended_NEON,            )
 BUILD_RENDER_LINE(NEON_Blended_Opaque   , 1, 1, 0     , PIXMAP, 0     , BG_Blended_Opaque_NEON,                ,            )
@@ -1052,7 +1052,7 @@ static SDL_INLINE int Render_Line(const render_mode_t render_mode, int subpixel,
         }
 
 
-#if defined(HAVE_NEON_INTRINSICS)
+#if 0 //defined(HAVE_NEON_INTRINSICS)
     if (hasNEON()) {
         Call_Specific_Render_Line(NEON)
     }
