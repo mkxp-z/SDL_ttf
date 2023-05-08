@@ -161,10 +161,10 @@ EXTRA_DIST = 			\
 	sdl2_ttf-config.cmake.in \
 	version.rc
 
-noinst_PROGRAMS = showfont glfont
+#noinst_PROGRAMS = showfont glfont
 
-showfont_LDADD = libSDL2_ttf.la
-glfont_LDADD = libSDL2_ttf.la @GL_LIBS@ @MATHLIB@
+#showfont_LDADD = libSDL2_ttf.la
+#glfont_LDADD = libSDL2_ttf.la @GL_LIBS@ @MATHLIB@
 
 # Rule to build tar-gzipped distribution package
 $(PACKAGE)-$(VERSION).tar.gz: distcheck
